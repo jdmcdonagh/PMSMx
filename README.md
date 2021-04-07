@@ -14,4 +14,6 @@ The model uses the A-V formulation in the time domain. Simplifications have been
 
 Four meshes were created within ANSYS Maxwell 3D and converted into the [HDF5 file format](https://www.hdfgroup.org/solutions/hdf5/) using h5py. The coarsest mesh comprised 125,478 elements while the finest mesh comprised 8,356,409 elements. The largest mesh could not be stored due to the large file size.
 
-![Mesh1](/img/Mesh1.png "Mesh1" | width=50) ![Mesh4](/img/Mesh4.png "Mesh4" | width=50)
+<!-- ![Mesh1](/img/Mesh1.png "Mesh1" | width=50) ![Mesh4](/img/Mesh4.png "Mesh4" | width=50)
+ -->
+<img src="/img/Mesh1.png" alt="Mesh1" width="50%"/>
