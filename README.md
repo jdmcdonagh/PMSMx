@@ -16,4 +16,4 @@ Four meshes were created within ANSYS Maxwell 3D and converted into the [HDF5 fi
 
 <!-- ![Mesh1](/img/Mesh1.png "Mesh1" | width=50) ![Mesh4](/img/Mesh4.png "Mesh4" | width=50)
  -->
-<img src="/img/Mesh1.png" alt="Mesh1" width="50%"/>
+<img src="/img/Mesh1.png" alt="Mesh1" width="50%"/><img src="/img/Mesh4.png" alt="Mesh1" width="50%"/>
