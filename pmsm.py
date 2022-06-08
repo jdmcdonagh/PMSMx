@@ -379,9 +379,9 @@ t_04 = Timer("04 Initialise Solvers")
 # Direct solver
 # solver_av = PETSc.KSP().create(mesh.mpi_comm())
 # solver_av.setOperators(A_av)
-# solver_av.setType("preonly")
-# solver_av.getPC().setType("lu")
 # opts_av = PETSc.Options("AV_")
+# opts_av["ksp_type"] = "preonly"
+# opts_av["pc_type"] = "lu"
 # opts_av["ksp_monitor"] = None
 # opts_av["ksp_view"] = None
 # solver_av.setFromOptions()
@@ -394,30 +394,31 @@ solver_av.setTolerances(rtol=1e-08, max_it=100000)
 solver_av.setType("gmres")
 solver_av.getPC().setType("bjacobi")
 opts_av = PETSc.Options("AV_")
+opts_av["ksp_converged_reason"] = None
+opts_av["ksp_monitor_true_residual"] = None
+opts_av["ksp_type"] = "gmres"
+opts_av["ksp_gmres_modifiedgramschmidt"] = None
+opts_av["ksp_diagonal_scale"] = None
+opts_av["ksp_gmres_restart"] = 500
+opts_av["ksp_rtol"] = 1e-08
+opts_av["ksp_max_it"] = 50000
+opts_av["pc_type"] = "bjacobi"
+opts_av["pc_view"] = None
 opts_av["ksp_monitor"] = None
 opts_av["ksp_view"] = None
 solver_av.setFromOptions()
 
-# Direct Derived Quantity Solver
+# Derived Quantity Solver
 solver_dq = PETSc.KSP().create(mesh.mpi_comm())
 solver_dq.setOptionsPrefix("DQ_")
 solver_dq.setType("preonly")
 solver_dq.getPC().setType("lu")
 opts_dq = PETSc.Options("DQ_")
+opts_av["ksp_type"] = "cg"
+opts_av["pc_type"] = "bjacobi"
 opts_dq["ksp_monitor"] = None
 opts_dq["ksp_view"] = None
 solver_dq.setFromOptions()
-
-# Iterative Derived Quantity Solver
-# solver_dq = PETSc.KSP().create(mesh.mpi_comm())
-# solver_dq.setOptionsPrefix("DQ_")
-# solver_dq.setTolerances(rtol=1e-8)
-# solver_dq.setType("gmres")
-# solver_dq.getPC().setType("none")
-# opts_dq = PETSc.Options("DQ_")
-# opts_dq["ksp_monitor"] = None
-# opts_dq["ksp_view"] = None
-# solver_dq.setFromOptions()
 
 t_04.stop()
 
